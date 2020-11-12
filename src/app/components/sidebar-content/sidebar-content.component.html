@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <span>Christian Smith</span>
+</mat-toolbar>
+
+<mat-action-list>
+  <button
+    *ngFor="let item of list; let isLast = last"
+    [routerLink]="item.path"
+    routerLinkActive="active"
+    mat-list-item
+    [ngClass]="{ logout: isLast }"
+  >
+    <mat-icon class="icon-space">{{ item.icon }}</mat-icon>
+    <span>{{ item.text }}</span>
+  </button>
+</mat-action-list>

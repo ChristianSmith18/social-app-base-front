@@ -1,0 +1,55 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="menuEvent()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Mi Red Social</span>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="person_add">
+    <mat-icon>person_add</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="chat">
+    <mat-icon>chat</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="notifications">
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="arrow_drop_down">
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+
+  <mat-menu #person_add="matMenu">
+    <button *ngFor="let item of [1, 1, 1]; let i = index" mat-menu-item>
+      <mat-icon class="icon-space">person_add</mat-icon>
+      <span>Solicitud de amistad {{ i + 1 }}</span>
+    </button>
+  </mat-menu>
+  <mat-menu #chat="matMenu">
+    <button
+      *ngFor="let item of [1, 1, 1, 1, 1, 1, 1]; let i = index"
+      mat-menu-item
+    >
+      <mat-icon class="icon-space">chat</mat-icon>
+      <span>Mensaje {{ i + 1 }}</span>
+    </button>
+  </mat-menu>
+  <mat-menu #notifications="matMenu">
+    <button *ngFor="let item of [1, 1, 1, 1, 1]; let i = index" mat-menu-item>
+      <mat-icon class="icon-space">notifications</mat-icon>
+      <span>Notificación {{ i + 1 }}</span>
+    </button>
+  </mat-menu>
+  <mat-menu #arrow_drop_down="matMenu">
+    <button
+      *ngFor="let item of list"
+      [title]="item.text"
+      [routerLink]="item.path"
+      mat-menu-item
+    >
+      <mat-icon class="icon-space">{{ item.icon }}</mat-icon>
+      <span>{{ item.text | shortText: 15 }}</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
